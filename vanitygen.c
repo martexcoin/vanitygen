@@ -313,6 +313,7 @@ usage(const char *name)
 "-1            Stop after first match\n"
 "-N            Generate namecoin address\n"
 "-M            Generate martexcoin address\n"
+"-m            Generate martexcoin testnet address\n"
 "-T            Generate bitcoin testnet address\n"
 "-X <version>  Generate address with the given version\n"
 "-F <format>   Generate address with the given format (pubkey or script)\n"
@@ -362,7 +363,7 @@ main(int argc, char **argv)
 
 	int i;
 
-	while ((opt = getopt(argc, argv, "vqnrik1eE:P:NTMX:F:t:h?f:o:s:")) != -1) {
+	while ((opt = getopt(argc, argv, "vqnrik1eE:P:NTMmX:F:t:h?f:o:s:")) != -1) {
 		switch (opt) {
 		case 'v':
 			verbose = 2;
@@ -399,6 +400,11 @@ main(int argc, char **argv)
                         addrtype = 50;
                         privtype = 178;
                         scriptaddrtype = 5;
+                        break;
+                case 'm':
+                        addrtype = 111;
+                        privtype = 324;
+                        scriptaddrtype = 196;
                         break;
 		case 'X':
 			addrtype = atoi(optarg);
